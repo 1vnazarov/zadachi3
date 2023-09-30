@@ -1,12 +1,10 @@
 import kotlin.random.Random
 
 fun main() {
-    print(
-        """
+    when (getInput("""
         1: камень-ножницы-бумага.
-        Выберите программу для проверки: """.trimIndent()
-    )
-    when (readln()) {
+        2: шифр Виженера
+        Выберите программу для проверки: """.trimIndent())) {
         "1" -> zadacha1()
         "2"-> zadacha2()
     }
