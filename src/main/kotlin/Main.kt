@@ -114,18 +114,13 @@ fun zadacha2() {
             val message = getInput("Введите исходное сообщение: ").lowercase()
             val key = buildRepeatedKey(message, getInput("Введите ключ: ").lowercase())
             val table = if (getInput("Использовать типовую таблицу? (y/n): ").lowercase() == "y") generateTypicalTable(alphabet) else generateRandomTable(alphabet)
-
             println("Исходное сообщение: $message")
             println("Ключ: $key")
-
             val encryptedMessage = encrypt(message, key, table)
-
             println("Зашифрованное сообщение: $encryptedMessage")
             println("Шифровальная таблица:")
             printTable(table)
-
             val decryptedMessage = decrypt(encryptedMessage, key, table)
-
             println("Расшифрованное сообщение: $decryptedMessage")
         }
         "2" -> {
