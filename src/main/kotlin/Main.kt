@@ -2,11 +2,13 @@ import kotlin.random.Random
 
 fun main() {
     when (getInput("""
-        1: камень-ножницы-бумага.
-        2: шифр Виженера
+        1: Камень-ножницы-бумага
+        2: Шифр Виженера
+        3: Шифр Порты
         Выберите программу для проверки: """.trimIndent())) {
         "1" -> zadacha1()
         "2"-> zadacha2()
+        //"3" -> zadacha3()
     }
 }
 
@@ -130,15 +132,11 @@ fun zadacha2() {
             val cipher = getInput("Введите шифр: ").lowercase()
             val key = buildRepeatedKey(cipher, getInput("Введите ключ: ").lowercase())
             val table = if (getInput("Использовать типовую таблицу? (y/n): ").lowercase() == "y") generateTypicalTable(alphabet) else generateRandomTable(alphabet)
-
             println("Шифр: $cipher")
             println("Ключ: $key")
-
             println("Шифровальная таблица:")
             printTable(table)
-
             val decryptedMessage = decrypt(cipher, key, table)
-
             println("Расшифрованное сообщение: $decryptedMessage")
         }
     }
