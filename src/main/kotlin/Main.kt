@@ -151,8 +151,8 @@ fun zadacha3() {
 
     fun generateTable(combinations: List<Pair<Char, Char>>): Map<String, String> {
         return combinations.mapIndexed { index, pair ->
-            val key = "%03d".format(index + 1)
-            val value = "${pair.first}${pair.second}"
+            val value = "%03d".format(index + 1)
+            val key = "${pair.first}${pair.second}"
             key to value
         }.toMap()
     }
@@ -160,7 +160,7 @@ fun zadacha3() {
     fun printTable(table: Map<String, String>) {
         var counter = 1
         for ((key, value) in table) {
-            print("$value: $key ")
+            print("$key: $value ")
             if (counter % alphabet.length == 0) {
                 println()
             }
@@ -172,9 +172,30 @@ fun zadacha3() {
         return (if (message.length % 2 == 1) message + helperSymbol else message).chunked(2)
     }
 
+    fun encrypt(message: List<String>, table: Map<String, String>): String {
+        var res = ""
+        for (i in message.indices) {
+            res += "${table[message[i]]} "
+        }
+        return res.substring(0, res.length - 1) // Удалить последний пробел
+    }
+
+    fun decrypt(cipher: String, table: Map<String, String>): String {
+        fun getKey(value: String): String? {
+            return table.entries.find { it.value == value }?.key
+        }
+        var res = ""
+        val pairs = cipher.replace(" ", "").chunked(3)
+        for (pair in pairs) {
+            res += getKey(pair)
+        }
+        return res
+    }
+
     val combinations = generateCombinations()
 
     val table = generateTable(combinations)
-    println(splitIntoPairs("абрамов", 'я'))
+    println(encrypt(splitIntoPairs("абрамов", 'я'), table))
+    println(decrypt(encrypt(splitIntoPairs("абрамов", 'я'), table), table))
     printTable(table)
 }
