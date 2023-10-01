@@ -8,7 +8,7 @@ fun main() {
         Выберите программу для проверки: """.trimIndent())) {
         "1" -> zadacha1()
         "2"-> zadacha2()
-        //"3" -> zadacha3()
+        "3" -> zadacha3()
     }
 }
 
@@ -135,4 +135,42 @@ fun zadacha2() {
             println("Расшифрованное сообщение: $decryptedMessage")
         }
     }
+}
+
+fun zadacha3() {
+    val alphabet = "абвгдежзиклмнопрстуфхцчшщъыьэюя"
+    fun generateCombinations(): List<Pair<Char, Char>> {
+        val combinations = mutableListOf<Pair<Char, Char>>()
+        for (i in 0 until alphabet.length) {
+            for (j in 0 until alphabet.length) {
+                combinations.add(alphabet[i] to alphabet[j])
+            }
+        }
+        return combinations
+    }
+
+    fun generateTable(combinations: List<Pair<Char, Char>>): Map<String, String> {
+        return combinations.mapIndexed { index, pair ->
+            val key = "%03d".format(index + 1)
+            val value = "${pair.first}${pair.second}"
+            key to value
+        }.toMap()
+    }
+
+    fun printTable(table: Map<String, String>) {
+        var counter = 1
+        for ((key, value) in table) {
+            print("$value: $key ")
+            if (counter % alphabet.length == 0) {
+                println()
+            }
+            counter++
+        }
+    }
+
+    val combinations = generateCombinations()
+
+    val table = generateTable(combinations)
+
+    printTable(table)
 }
