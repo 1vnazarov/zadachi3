@@ -168,9 +168,13 @@ fun zadacha3() {
         }
     }
 
+    fun splitIntoPairs(message: String, helperSymbol: Char): List<String> {
+        return (if (message.length % 2 == 1) message + helperSymbol else message).chunked(2)
+    }
+
     val combinations = generateCombinations()
 
     val table = generateTable(combinations)
-
+    println(splitIntoPairs("абрамов", 'я'))
     printTable(table)
 }
