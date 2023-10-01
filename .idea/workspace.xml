@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b78e2d54-65e3-4239-bb8d-db8fb537217c" name="Changes" comment="Разбиение слова на пары с добавлением вспомогательного символа">
+    <list default="true" id="b78e2d54-65e3-4239-bb8d-db8fb537217c" name="Changes" comment="Шифровка-дешифровка">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
@@ -84,7 +84,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696157259933</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Шифровка-дешифровка">
+      <option name="closed" value="true" />
+      <created>1696159519445</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1696159519445</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -92,6 +100,7 @@
     <MESSAGE value="Шифр Виженера" />
     <MESSAGE value="Порты генерация, печать таблицы" />
     <MESSAGE value="Разбиение слова на пары с добавлением вспомогательного символа" />
-    <option name="LAST_COMMIT_MESSAGE" value="Разбиение слова на пары с добавлением вспомогательного символа" />
+    <MESSAGE value="Шифровка-дешифровка" />
+    <option name="LAST_COMMIT_MESSAGE" value="Шифровка-дешифровка" />
   </component>
 </project>

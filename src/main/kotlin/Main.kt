@@ -192,10 +192,29 @@ fun zadacha3() {
         return res
     }
 
-    val combinations = generateCombinations()
-
-    val table = generateTable(combinations)
-    println(encrypt(splitIntoPairs("абрамов", 'я'), table))
-    println(decrypt(encrypt(splitIntoPairs("абрамов", 'я'), table), table))
-    printTable(table)
+    when (getInput("1 - зашифровать\n2 - расшифровать\nВыберите действие: ")) {
+        "1" -> {
+            val message = getInput("Введите исходное сообщение: ").lowercase()
+            val helperSymbol = getInput("Введите вспомогательный символ: ").lowercase()[0]
+            val typeTable = getInput("Использовать типовую таблицу? (y/n): ").lowercase() == "y"
+            var combinations = generateCombinations()
+            if (!typeTable) combinations = combinations.shuffled()
+            val table = generateTable(combinations)
+            println("Таблица:")
+            printTable(table)
+            val pairs = splitIntoPairs(message, helperSymbol)
+            println("Исходное сообщение, разбитое по парам со вспомогательным символом: ${pairs.joinToString(", ")}")
+            println("Зашифрованное сообщение: ${encrypt(pairs, table)}")
+        }
+        "2" -> {
+            val cipher = getInput("Введите шифр: ").lowercase()
+            val typeTable = getInput("Использовать типовую таблицу? (y/n): ").lowercase() == "y"
+            var combinations = generateCombinations()
+            if (!typeTable) combinations = combinations.shuffled()
+            val table = generateTable(combinations)
+            println("Таблица:")
+            printTable(table)
+            println("Расшифрованное сообщение: ${decrypt(cipher, table)}")
+        }
+    }
 }
