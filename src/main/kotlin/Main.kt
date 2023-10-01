@@ -27,7 +27,7 @@ fun zadacha1() {
         println("Ничья! Сыграйте снова")
         return zadacha1()
     }
-    var res = if ((player == 2 && ai == 0) || (player == 0 && ai == 1) || (player == 1 && ai == 2)) "Вы победили. "
+    var res = if ((player == 2 && ai == 0) || (player == ai - 1)) "Вы победили. "
     else "Компьютер победил. "
     if ((ai == 2 || player == 2) && (ai == 0 || player == 0)) res += "Бумага обёртывает камень"
     else if ((ai == 0 || player == 0) && (ai == 1 || player == 1)) res += "Камень затупляет или ломает ножницы"
