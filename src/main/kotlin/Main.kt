@@ -194,7 +194,7 @@ fun zadacha3() {
 
     when (getInput("1 - зашифровать\n2 - расшифровать\nВыберите действие: ")) {
         "1" -> {
-            val message = getInput("Введите исходное сообщение: ").lowercase()
+            val message = getInput("Введите исходное сообщение: ").lowercase().replace("ё", "е").replace("й", "и")
             val helperSymbol = getInput("Введите вспомогательный символ: ").lowercase()[0]
             val typeTable = getInput("Использовать типовую таблицу? (y/n): ").lowercase() == "y"
             var combinations = generateCombinations()
@@ -207,13 +207,13 @@ fun zadacha3() {
             println("Зашифрованное сообщение: ${encrypt(pairs, table)}")
         }
         "2" -> {
-            val cipher = getInput("Введите шифр: ").lowercase()
             val typeTable = getInput("Использовать типовую таблицу? (y/n): ").lowercase() == "y"
             var combinations = generateCombinations()
             if (!typeTable) combinations = combinations.shuffled()
             val table = generateTable(combinations)
             println("Таблица:")
             printTable(table)
+            val cipher = getInput("Введите шифр: ").lowercase()
             println("Расшифрованное сообщение: ${decrypt(cipher, table)}")
         }
     }
